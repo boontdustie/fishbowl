@@ -5,8 +5,7 @@ describe Fishbowl::Requests do
     before :each do
       mock_tcp_connection
       mock_login_response
-      Fishbowl::Connection.connect(host: 'localhost')
-      Fishbowl::Connection.login(username: 'johndoe', password: 'secret')
+      configure_and_connect({ host: 'localhost', username: 'johndoe', password: 'secret' })
     end
 
     let(:connection) { FakeTCPSocket.instance }
@@ -47,6 +46,8 @@ describe Fishbowl::Requests do
     it "sends proper request" do
       mock_the_response('AddSOItemRs')
       Fishbowl::Requests.add_sales_order_item(valid_options)
+      require 'pry'
+      binding.pry
       connection.last_write.should be_equivalent_to(expected_request)
     end
 

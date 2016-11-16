@@ -5,7 +5,6 @@ module Fishbowl::Errors
   class MissingHost < ArgumentError; end;
   class MissingUsername < ArgumentError; end;
   class MissingPassword < ArgumentError; end;
-
   class StatusError < RuntimeError; end;
 
   def self.confirm_success_or_raise(code)
@@ -14,6 +13,6 @@ module Fishbowl::Errors
 
   def self.get_status(code)
     status_codes = YAML.load_file('./lib/status_codes.yml')['codes']
-    status_codes[code]['message']
+    status_codes[code] ? status_codes[code]['message'] : 'Unknown Error'
   end
 end

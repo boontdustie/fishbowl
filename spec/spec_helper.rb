@@ -19,6 +19,7 @@ if ENV['CI'] != 'true'
     require 'support/examples_loader'
     require 'support/fake_socket'
     require 'support/response_mocks'
+    require 'support/connection_helper'
 
     RSpec.configure do |config|
       # some (optional) config here

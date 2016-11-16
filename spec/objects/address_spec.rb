@@ -4,8 +4,8 @@ describe Fishbowl::Objects::Address do
   before :each do
     mock_tcp_connection
     mock_login_response
-    Fishbowl::Connection.connect(host: 'localhost')
-    Fishbowl::Connection.login(username: 'johndoe', password: 'secret')
+
+    configure_and_connect({ host: 'localhost', username: 'johndoe', password: 'secret' })
   end
 
   after :each do
@@ -33,4 +33,3 @@ describe Fishbowl::Objects::Address do
     end
   end
 end
-

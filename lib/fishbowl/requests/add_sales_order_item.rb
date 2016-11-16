@@ -12,7 +12,7 @@ module Fishbowl::Requests
     Fishbowl::Objects::BaseObject.new.send_request(request, 'AddSOItemRs')
   end
 
-private
+  private
 
   def self.format_add_sales_order_item_request(options)
     Nokogiri::XML::Builder.new do |xml|
@@ -38,5 +38,4 @@ private
       }
     end
   end
-
 end

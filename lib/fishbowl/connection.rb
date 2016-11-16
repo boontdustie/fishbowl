@@ -1,8 +1,11 @@
+require 'digest'
+
 module Fishbowl
   class Connection
     include Singleton
 
     def self.connect()
+      Fishbowl.configure {} if Fishbowl.configuration.nil?
       raise Fishbowl::Errors::MissingHost if Fishbowl.configuration.host.nil?
 
       @host = Fishbowl.configuration.host
@@ -15,8 +18,8 @@ module Fishbowl
 
     def self.login()
       raise Fishbowl::Errors::ConnectionNotEstablished if @connection.nil?
-      raise Fishbowl::Errors::MissingUsername if Fishbowl.configuration.host.nil?
-      raise Fishbowl::Errors::MissingPassword if Fishbowl.configuration.host.nil?
+      raise Fishbowl::Errors::MissingUsername if Fishbowl.configuration.username.nil?
+      raise Fishbowl::Errors::MissingPassword if Fishbowl.configuration.password.nil?
 
       @username = Fishbowl.configuration.username
       @password = Fishbowl.configuration.password

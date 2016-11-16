@@ -1,11 +1,2 @@
-source :rubygems
-
+source 'https://rubygems.org'
 gemspec
-
-gem 'rake'
-gem 'rspec'
-gem 'equivalent-xml'
-
-group :localtest do
-  gem 'pry'
-end
